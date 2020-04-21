@@ -1,0 +1,123 @@
+= Big O and Recursion
+
+.*Table of Contents:*
+
+* `Why Big O`
+* `What is Big O`
+* `Some code snippets to find Big O of`
+* `What is Recursion`
+* `Some Recursion Examples`
+
+=== Why Big O
+Big O is a way to findout how efficient our Code/Algorithms are, we can model that by assuming how much time our algorithm is going to take given a `n` number of inputs. But we're interested in the amount of impact in time to the number and the exact figure.
+
+*For Example* : I would not care much if my code is going to take `300 ms` (milliseconds) or `330 ms` but I would really care if it is going to take `30 sec` instead of `300ms`, We would only care if the magnitude or impact is too big.
+
+This is where Big O comes in, Think of the O as a way to ignore other expressions that particularly don't have much of an impact and keep keep track of the biggest exponent
+
+Let's get a little mathy, here :
+ Let's assume the following equation: `3x^2^+x+1`, What do you think what's the part of the equation, that's gonna have the major and most impact on the processing. Here in the example, the most important part of it would be `x^2^`.
+ let's see that in action, for example if `x` = 5, hte first term will be 75m the second one would be 5 and by adding them altogather, we get 81, It's pretty clear which statement has the major effect.
+ 
+Let's scale the above example : Let's assume, `x` = 5,000,000 , the first term would become 75,000,000,000,000 and the second one 5,000,000 and the last one results as 1. This is where it has a major impact given that it's the amount of inputs your program receives.
+
+So What does Big O does ?
+
+=== What is Big O
+What Big O deos is, we ignore the little parts, and concentrate on the big parts. Considering the previous example `3x^2^+x+1`, hence, the Big O for this equation would be `O(n^2^)`, where O is absorbing all the other fluff of the equation
+(including the factor of the biggest term). So in that equation, given that `n` number of terms, It's gonna take us `n*n` to go through the inputs. 
+
+So let's get into some code derivition of the above described concepts : 
+
+=== Some code snippets to find Big O of : 
+[source,javascript]
+----
+function crossAdd(input) {
+    var answer = [];
+    for (var i = 0; i < input.length; i++) {
+        var goingUp = input[i];
+        var goingDown = input[input.length-1-i];
+        answer.push(goingUp + goingDown);
+    }
+    return answer;
+}
+----
+Here the Big O is `O(n)` the input has to go through once through the code.
+
+[source,javascript]
+----
+function find(needle, haystack) {
+    for (var i = 0; i < haystack.length; i++) {
+        if (haystack[i] === needle) return true;
+    }
+}
+----
+Still it's `O(n)`
+
+[source,javacript]
+----
+function makeTuples(input) {
+    var answer = [];
+    for (var i = 0; i < input.length; i++) {
+        for (var j = 0; j < input.length; j++) {
+            answer.push([input[i], input[j]]);
+        }
+    }
+    return answer;
+}
+----
+Here the Big O becomes `O(n^2^)`, whenever trying to find Big O, try to find the loops as in most cases that's where you can find the Big O.
+
+P.S: When Big O is `O(n^3^)`, in most of the cases it's not good. Another one `O(log n)` is about Divide and Conquer.
+
+=== Recursion:
+The most simplest definition, you can find of Recursion is a Function that calls itself.
+
+
+.*Some important facts about Recursions: *
+* Calling a function is not free, in terms of memory.
+* Try to keep Readability over Performance(This should not lack too :D) 
+* Don't be clever unless you really have to be.
+* Try to keep the first line of a recursive function as it's base case (When to Stop) or else StackOverflow.
+** Try to keep the Basecase as Aggressive as you can.
+
+*Some Code on Recursion (Python)*
+[source,python]
+----
+def recur_factorial(n):  
+    if n == 1:  
+        return n  
+    else:  
+        return n*recur_factorial(n-1)  
+# take input from the user  
+num = int(input("Enter a number: "))  
+# check is the number is negative  
+if num < 0:  
+    print("Sorry, factorial does not exist for negative numbers")  
+elif num == 0:  
+     print("The factorial of 0 is 1")  
+else:  
+    print("The factorial of",num,"is",recur_factorial(num))  
+----
+The above program takes an input a number and returns it's factorial, It's not useful for production environment but a good way to understand how recursion works. 
+
+Here's another one to demonstrate recursion by printing Fibbonacci Sequence of the terms defined:
+[source,python]
+----
+def recur_fibo(n):  
+    if n <= 1:  
+        return 1  
+    else:  
+        return(recur_fibo(n-1) + recur_fibo(n-2))  
+# take input from the user  
+nterms = int(input("How many terms? "))  
+# check if the number of terms is valid  
+if nterms <= 0:  
+    print("Plese enter a positive integer")  
+else:  
+    print("Fibonacci sequence:")  
+for i in range(nterms):  
+    print(recur_fibo(i))  
+----
+
+Another thing to keep in mind, I'm return ing 1 in the base case statement, because if the total number of calls allowed are 100 and if 100 generates the Fibbonacci sequence and i returned the variable, the calls turn into 101 and Stackoverflow.
