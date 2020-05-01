@@ -1,0 +1,95 @@
+= Class 2 Notes.
+
+== Announcements :
+- Start ASST1
+- Learn to use `test161`
+
+== Notes: 
+The Kernel provides an Interface to Processes for them to execute. 
+
+=== Difference Between Processes and Threads:
+- A Thread is Assigned to a Process. A process is what is executed on the CPU.
+- A Computing process requires multiple resources: The CPU, Memory, File Handles, etc.
+- A Thread of Execution abstracts CPU State.
+- A Process Contains Threads.
+** A little exception here, The Kernel may have threads of execution not related to any user process. At the end of the day that's a process too providing an Interface for other processes to communicate with the CPU.
+- A Process can have multiple Threads.
+- The keywords defer when it comes to different Operating Systems, Ex: Linux calls everything a `Task` including Threads and Processes.
+
+=== Process Example: Firefox (Web Browser).
+==== Jobs of a Web Browser:
+- Waiting for Input from devices & for Web response.
+- *It renders the Page* (From HTML).
+- Loads Web Pages - Usually multiple parts in Parallel to Speed things up.
+
+Why It uses Memory:
+- Store rendering framebuffers.
+- for `firefox.exe` itself.
+- Shared libraries for Web page parsing, security, etc.
+- Stack memory to store local variables for running Threads.
+- A Heap storage for Dynamically allocated memory.
+
+It has File Handles, Why?
+- To store configuration files.
+- To store Bookmarks, Fonts & Plugins.
+
+How to know if the Data is Stored on Memory or Disk, Simple, If the data persists after the application being closed and reopened, it's on the disk, Or else it's on Memory.
+
+=== More Process Information : 
+Here's a linux command to see what processes are running on your device. It refreshes itself. Sometimes if your fan starts to run too fast, you can check here
+what's consuming the huge amount of memory or processing power. e.g <send-all-my-files-to-a-hacker>.exe :P
+[source,bash]
+----
+$ top
+----
+Why don't we use `ps` for it, `ps` can be used for a snapshot of a specific time, what processes are running at that moment.
+
+Another tool that comes handy with it is, `pgrep`, Once you provide it a process name and it would return the process id.
+
+Usage:
+[source,bash]
+----
+$ pgrep <nameoftheprocess>
+----
+
+*Difference between `ps` & `ps aux`* : `ps` shows the processs of the current logged-in terminal, on the other hand `ps aux` and also we rewritten as a combination of the
+following flags provided together: 
+- `a`: To print the running process from all users
+- `u`: To add the user or owner column in Output.
+- `x`: To print the processes not been executed from the current terminal.
+
+To Get Thread information: `$ ps -LF <PID>` of a Process.
+
+Understanding the Output of `ps aux`:
+
+- `UID`: User who created the Process.
+- `PID`: Process ID.
+- `PPID`: Parent Process ID.
+- `PRI`: Scheduling Priority.
+- `SZ`: Size of the core image of the process in KB's.
+- `WCHAN`: If the process is not running, Description of what it's waiting for.
+
+==== Bash:
+Bash is a Shell. It's single threaded. 1 bash process = 1 thread.
+If you have a lot of terminal instances, there will be the equialent amount of processes of a shell running on it & depending on the shell, it will have the equivalent
+amount of threads.
+
+==== Webserver (Apache):
+A Server like Apache have multiple threads while serving a website to clients. i.e: One thread for one request & to serve concurrently. Web Browsers also use multiple threads.
+
+=== Memory Mappings
+To get the memory addresses related to a Process, you can use the following command: 
+[source,bash]
+----
+$ pmap <PID>
+----
+It returns the Memory Addresses along with the size, permissions & what type of blocks they're, They were mostly `Anon`[1]
+
+== To Do, in the next few Days:
+
+- Start ASST1.
+- Write a basic browser plugin for firefox.
+- Think of other Processes & Applications for their Abstractions.
+
+== References
+[1]: Anon Blocks are "large" blocks allocated via malloc or mmap
