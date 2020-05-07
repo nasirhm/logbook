@@ -1,0 +1,39 @@
+= Algorithms
+Nasir Hussain <nasirhussainm14@gmail.com>
+
+_It's a part of the Algorithms Part 1 course offered by Princeton University_
+
+== Algorithms & Data Structures
+
+=== Why study Algorithms
+- They're everywhere.
+- Old roots, new Opportunities.
+
+> > An Algorithm must be seen to be Believed
+
+=== How to design an Algorithm
+
+- Model the Problem
+- Find an Algorithm to solve it.
+- Is it fast enough, does it Fit memory.
+- Improve.
+
+=== Problem : Union Find
+
+*Dynamic Connectivity :*
+
+- Union command to connect to objects.
+- Connected command to see if the objects are connected or not.
+
+==== Model the Connections :
+- *Reflexive: * _p_ is connected to _p_
+- *Symmetric: * if _p_ is connected to _q_, then _q_ is connected to _p_
+- *Transitive: * if _p_ is connected to _q_, then _p_ is connected to _r_, So _q_ is connected to _r_
+
+*Connected Components: * Maximal set of objects that are manually connected. 
+
+*Implementing the Operations: * 
+- Find Query 
+- Union Command
+
+==== Union find data type (API)
