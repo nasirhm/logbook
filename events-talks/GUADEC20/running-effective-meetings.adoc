@@ -1,0 +1,41 @@
+== Running Effective Meetings
+
+=== Why Meetings
+
+- Context to Work
+- Some Work no one needs to do
+- My work is about to be yours.
+
+=== How to run effective meetinss:
+
+* Setting the stage:
+** There must be reasons for the meeting
+** If no one's incharge, You can't control the meeting
+** Ensuring to conduct meetings at different times for ease for other people
+** Meetings shouldn't be a waste of time
+
+* Meetings should've agenda
+** Writing the script : Providing the context
+** A bad practice : Updates from the week or since last meeting in no particular order
+** People like organized meetings
+** Keep the same agenda forever vs Respect people's time
+** Take all the notes and create action items (if needed).
+*** What if I'm not good at taking notes:
+**** You don't like to take notes :)
+** Changing chairs for the meetings once in a while.
+** **Listen**
+
+== To make a meeting awesome (Conclusion):
+
+* Don't make quick decisions
+* Bad: No one followed the agenda
+* Keep the focus on Agenda
+* o/ <- raising hands, to balance interruption
+* If someone's trying to visit past week's discussion, provide the logs, we don't want to repeat it all over.
+* Sticking to Agenda vs New Topic that occurs
+
+== Keys:
+
+* Notes
+* Moderation
+* Agenda
